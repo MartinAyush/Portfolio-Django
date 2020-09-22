@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% static 'Djangocommands.txt' %}">Notes</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
                     </li>
 
@@ -69,10 +69,11 @@
         <section class="jumbotron text-center">
             <div class="container my-5">
                 <h1>Hi I'm Martin</h1>
-                <p class="lead text-muted">Something short and leading about the collection below—its contents, the
-                    creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
-                    entirely.
-                </p>
+                <p class="lead text-muted">Maecenas sit amet lorem non sapien vehicula luctus vitae id neque. Nulla
+                    suscipit dolor eget velit cursus, ut laoreet nisi rutrum. Pellentesque vehicula nulla a sagittis
+                    luctus. Aliquam erat volutpat. Pellentesque consectetur hendrerit nisi. Phasellus lobortis nibh
+                    vitae metus imperdiet, quis auctor urna gravida. Nulla vitae fermentum nisi. Aliquam porta et odio
+                    vehicula sagittis.</p>
                 <p>
                     <a href="mailto: martinayush04@gmail.com" class="btn btn-primary my-2">Email Me</a>
                 </p>
@@ -81,22 +82,26 @@
 
         <div class="album py-5 bg-light">
             <div class="container">
-
-                <div class="row">
-                    {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}" />
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>
-
-                            </div>
-                        </div>
+                <div class="text-center">
+                    <h1 class="text-center">Latest Posts</h1>
+                    <hr>
+                    {% for blog in blogs.all %}
+                    <div>
+                        <a href="{% url 'details' blog.id %}">
+                            <h3>{{ blog.title }}</h3>
+                        </a>
+                        <p class="lead">{{ blog.publish_date }}</p>
+                        <img src="{{ blog.image.url }}" class="img-thumbnail" width="600px">
+                        <br>
+                        <br>
+                        <p>{{ blog.body_short }}</p>
+                        <hr>
                     </div>
                     {% endfor %}
-
                 </div>
+
             </div>
+        </div>
         </div>
 
     </main>

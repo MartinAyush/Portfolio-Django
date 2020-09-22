@@ -1,0 +1,21 @@
+Setup Environment:-
+
+1. python -m venv env
+2. select python interpreter
+3. python -m pip install django
+
+Create Project:-
+1. django-admin startproject [Project Name] .
+2. python manage.py runserver
+
+Create App:-
+python manage.py startapp [name of app]
+
+for connecting database and models:-
+
+1. python manage.py migrate
+2. python manage.py makemigrations 
+
+add app to admin or registering to admin:-
+. from .models import [app class name]
+admin.site.register([app class name])
